@@ -4,6 +4,7 @@ const path = require('path');
 const nanoid = require('nanoid');
 const config = require('../config');
 const Album = require('../models/Album');
+const Track = require('../models/Track');
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -21,30 +22,38 @@ router.get('/', (req, res) => {
 
     if (req.query.artist) {
 
-        Album.find().populate('artist').then(albums => {
+        Album.find().populate('artist').sort({year: 1}).then( function(albums) {
             const result = [];
-            albums.map(item=>{
+            albums.map(async (item, ndx) => {
                 if (item.artist._id == req.query.artist) {
+                    console.log('this is item title ', item.title);
                     result.push(item);
+
+                    await Track.find({album: item._id}).then(function (track) {
+                        item.tracks = track.length;
+                        console.log('this is track ', item.tracks);
+                    });
+
                 }
+
             });
 
-            if (albums) res.send(result);
+            if (result.length !== 0) res.send(result);
             else res.sendStatus(404);
         }).catch(() => res.sendStatus(500));
     } else {
         Album.find().populate('artist')
-            .then(artists => res.send(artists))
+            .then(albums => res.send(albums))
             .catch(() => res.sendStatus(500));
     }
 });
 
 router.get('/:id', (req, res) => {
 
-        Album.findOne({_id: req.params.id}).populate('artist').then(album => {
-            if (album) res.send(album);
-            else res.sendStatus(404);
-        }).catch(() => res.sendStatus(500));
+    Album.findOne({_id: req.params.id}).populate('artist').then(album => {
+        if (album) res.send(album);
+        else res.sendStatus(404);
+    }).catch(() => res.sendStatus(500));
 });
 
 

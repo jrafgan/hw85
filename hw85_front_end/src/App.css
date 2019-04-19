@@ -4,11 +4,6 @@
   width: 100%;
 }
 
-/*.list_div {*/
-/*  display: grid;*/
-/*  grid-template-columns: repeat(3, 33%);*/
-/*}*/
-
 .h2 {
   display: grid;
   justify-self: center;
@@ -21,8 +16,15 @@
   grid-column-gap: 10px;
 }
 
-.artist_p {
-  grid-column: 1 / span 4;
+.one_artist {
+  display: grid;
+  grid-column: 1 / 4;
+  text-align: center;
+}
+
+.artist_p,
+.album_p {
+  grid-column: 1 / 4;
   justify-self: center;
 }
 

@@ -18,9 +18,10 @@ const storage = multer.diskStorage({
 const upload = multer({storage});
 
 router.get('/', (req, res) => {
+    console.log('req query id ', req.query.id);
     if (req.query.id) {
-        Artist.findOne({shortUrl: req.params.shortUrl}).then(link => {
-            if (link) res.status(301).redirect(link.originalUrl);
+        Artist.findOne({_id: req.query.id}).then(artist => {
+            if (artist) res.send(artist);
             else res.sendStatus(404);
         }).catch(() => res.sendStatus(500));
     } else {

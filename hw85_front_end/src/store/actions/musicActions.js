@@ -1,6 +1,7 @@
 import axios from '../../axios-api';
 
 export const FETCH_ARTISTS_SUCCESS = 'FETCH_ARTISTS_SUCCESS';
+export const FETCH_ARTIST_SUCCESS = 'FETCH_ARTIST_SUCCESS';
 export const FETCH_ALBUMS_SUCCESS = 'FETCH_ALBUMS_SUCCESS';
 export const FETCH_ALBUM_SUCCESS = 'FETCH_ALBUM_SUCCESS';
 export const FETCH_TRACKS_SUCCESS = 'FETCH_TRACKS_SUCCESS';
@@ -8,6 +9,7 @@ export const FETCH_TRACKSBYARTIST_SUCCESS = 'FETCH_TRACKSBYARTIST_SUCCESS';
 export const FETCH_TRACKSBYALBUM_SUCCESS = 'FETCH_TRACKSBYALBUM_SUCCESS';
 
 export const fetchArtistsSuccess = artists => ({type: FETCH_ARTISTS_SUCCESS, artists});
+export const fetchArtistSuccess = artist => ({type: FETCH_ARTIST_SUCCESS, artist});
 export const fetchAlbumsSuccess = albums => ({type: FETCH_ALBUMS_SUCCESS, albums});
 export const fetchAlbumSuccess = album => ({type: FETCH_ALBUM_SUCCESS, album});
 export const fetchTracksSuccess = tracks => ({type: FETCH_TRACKS_SUCCESS, tracks});
@@ -23,11 +25,22 @@ export const getArtists = () => {
     };
 };
 
+export const getArtist = (id) => {
+    return dispatch => {
+        return axios.get('/artists?id=' + id).then(
+            response => {
+                dispatch(fetchArtistSuccess(response.data));
+
+            });
+    };
+};
+
 export const getAlbums = (artistId) => {
     return dispatch => {
         return axios.get('/albums?artist=' + artistId).then(
             response => {
                 dispatch(fetchAlbumsSuccess(response.data));
+                console.log(response.data);
             });
     };
 };

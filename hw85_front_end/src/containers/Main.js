@@ -3,7 +3,7 @@ import '../App.css'
 import {getAlbums, getArtists, getTracks} from "../store/actions/musicActions";
 import connect from "react-redux/es/connect/connect";
 import ImageThumbnail from "../components/ImageThumbnail";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 
 class Main extends Component {
@@ -14,6 +14,9 @@ class Main extends Component {
         // this.props.getTracks();
     }
 
+    getAlbums = e => {
+      console.log(e.target);
+    };
 
     selectChangeHandler = e => {
         this.setState({
@@ -41,13 +44,14 @@ class Main extends Component {
                     <NavLink className="add_album" to="/add_album">Добавить Альбом</NavLink>
                 </div>
                 <div className="list_div">
-                    <div className="column" onClick={this.getAlbums}>
+                    <div className="column">
                         <p className="artist_p">Исполнители</p>
                         {this.props.artists ? this.props.artists.map(item => {
-                            return <div className="artist_thumbnail" key={item._id}>
+                            return <div className="artist_thumbnail" key={item._id} id={item._id}  onClick={this.getAlbums}>
                                 <ImageThumbnail image={item.image}/>
                                 <p>{item.name}</p>
                                 <p>{item.description}</p>
+                                <Link to={"/album_info/" + item._id}>Альбомы</Link>
                             </div>
                         }) : null}
                     </div>

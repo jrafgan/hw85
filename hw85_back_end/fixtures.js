@@ -27,55 +27,55 @@ const run = async () => {
     const [tsoi_45, tsoi_gruppa, tsoi_zvezda, cranberries_no_argue, cranberries_bury, cranberries_in_the_end, ennio_good_bad, ennio_once_upon, ennio_fistful] = await Album.create(
         {
             title: '«45»',
-            artist: tsoi.name,
+            artist: tsoi._id,
             year: '1982',
             image: '45_kino.jpg'
         },
         {
             title: '«Группа крови»',
-            artist: tsoi.name,
+            artist: tsoi._id,
             year: '1988',
             image: 'gruppa_krovi.jpg'
         },
         {
             title: '«Звезда по имени Солнце»',
-            artist: tsoi.name,
+            artist: tsoi._id,
             year: '1989',
             image: 'zvezda_solnce.jpg'
         },
         {
             title: 'No Need to Argue',
-            artist: cranberries.name,
+            artist: cranberries._id,
             year: '1994',
             image: 'no_need_argue.jpeg'
         },
         {
             title: 'Bury the Hatchet',
-            artist: cranberries.name,
+            artist: cranberries._id,
             year: '1999',
             image: 'bury_the_hatchet.jpg'
         },
         {
             title: 'In the End',
-            artist: cranberries.name,
+            artist: cranberries._id,
             year: '2019',
             image: 'in_the_end.jpeg'
         },
         {
             title: 'The Good, The Bad & The Ugly',
-            artist: ennio.name,
+            artist: ennio._id,
             year: '1967',
             image: 'good_bad_ugly.jpg'
         },
         {
             title: 'Once Upon a Time in the West',
-            artist: ennio.name,
+            artist: ennio._id,
             year: '1969',
             image: 'once_upon_atime.jpg'
         },
         {
             title: 'A Fistful Of Dollars',
-            artist: ennio.name,
+            artist: ennio._id,
             year: '1967',
             image: 'fistful.jpg'
         }
@@ -84,138 +84,165 @@ const run = async () => {
     await Track.create(
         {
             title: 'Аллюминевые огурцы',
-            album: tsoi_45.title,
-            duration: '2,56'
+            album: tsoi_45._id,
+            duration: '2,56',
+            number: 1
         },
         {
             title: 'Электричка',
-            album: tsoi_45.title,
-            duration: '2,34'
+            album: tsoi_45._id,
+            duration: '2,34',
+            number: 2
         },
         {
             title: 'Восьмиклассница',
-            album: tsoi_45.title,
-            duration: '2,44'
+            album: tsoi_45._id,
+            duration: '2,44',
+            number: 3
         },
         {
             title: 'Группа крови',
-            album: tsoi_gruppa.title,
-            duration: '4,44'
+            album: tsoi_gruppa._id,
+            duration: '4,44',
+            number: 1
         },
         {
             title: 'Закрой за мной дверь',
-            album: tsoi_gruppa.title,
-            duration: '4,16'
+            album: tsoi_gruppa._id,
+            duration: '4,16',
+            number: 2
         },
         {
             title: 'Прохожий',
-            album: tsoi_gruppa.title,
-            duration: '3,38'
+            album: tsoi_gruppa._id,
+            duration: '3,38',
+            number: 3
         },
         {
             title: 'Звезда по имени Солнце',
-            album: tsoi_zvezda.title,
-            duration: '3,46'
+            album: tsoi_zvezda._id,
+            duration: '3,46',
+            number: 1
         },
         {
             title: 'Пачка сигарет',
-            album: tsoi_zvezda.title,
-            duration: '4,28'
+            album: tsoi_zvezda._id,
+            duration: '4,28',
+            number: 2
         },
         {
             title: 'Печаль',
-            album: tsoi_zvezda.title,
-            duration: '5,32'
+            album: tsoi_zvezda._id,
+            duration: '5,32',
+            number: 3
         },
         {
             title: 'Ode to My Family',
-            album: cranberries_no_argue.title,
-            duration: '4.31'
+            album: cranberries_no_argue._id,
+            duration: '4.31',
+            number: 1
         },
         {
             title: 'Zombie',
-            album: cranberries_no_argue.title,
-            duration: '5.07'
+            album: cranberries_no_argue._id,
+            duration: '5.07',
+            number: 2
         },
         {
             title: 'No need to argue',
-            album: cranberries_no_argue.title,
-            duration: '2.54'
+            album: cranberries_no_argue._id,
+            duration: '2.54',
+            number: 3
         },
         {
             title: 'Animal Instinct',
-            album: cranberries_bury.title,
-            duration: '3.31'
+            album: cranberries_bury._id,
+            duration: '3.31',
+            number: 1
         },
         {
             title: 'Loud and clear',
-            album: cranberries_bury.title,
-            duration: '2.45'
+            album: cranberries_bury._id,
+            duration: '2.45',
+            number: 2
         },
         {
             title: 'Linger',
-            album: cranberries_bury.title,
-            duration: '4.38'
+            album: cranberries_bury._id,
+            duration: '4.38',
+            number: 3
         },
         {
             title: 'All Over Now',
-            album: cranberries_in_the_end.title,
-            duration: '4.15'
+            album: cranberries_in_the_end._id,
+            duration: '4.15',
+            number: 1
         },
         {
             title: 'Catch Me If You Can',
-            album: cranberries_in_the_end.title,
-            duration: '3.48'
+            album: cranberries_in_the_end._id,
+            duration: '3.48',
+            number: 2
         },
         {
             title: 'In the End',
-            album: cranberries_in_the_end.title,
-            duration: '4.26'
+            album: cranberries_in_the_end._id,
+            duration: '4.26',
+            number: 3
         },
         {
             title: 'The good, the bad and the ugly',
-            album: ennio_good_bad.title,
-            duration: '2.38'
+            album: ennio_good_bad._id,
+            duration: '2.38',
+            number: 1
         },
         {
             title: 'The Desert',
-            album: ennio_good_bad.title,
-            duration: '5.11'
+            album: ennio_good_bad._id,
+            duration: '5.11',
+            number: 2
         },
         {
             title: 'Marcia',
-            album: ennio_good_bad.title,
-            duration: '2.49'
+            album: ennio_good_bad._id,
+            duration: '2.49',
+            number: 3
         },
         {
             title: 'Once Upon a Time in the West',
-            album: ennio_once_upon.title,
-            duration: '3.43'
+            album: ennio_once_upon._id,
+            duration: '3.43',
+            number: 1
         },
         {
             title: 'Farewell to Cheyenne',
-            album: ennio_once_upon.title,
-            duration: '2.37'
+            album: ennio_once_upon._id,
+            duration: '2.37',
+            number: 2
         },
         {
             title: 'The Transgression',
-            album: ennio_once_upon.title,
-            duration: '4.40'
+            album: ennio_once_upon._id,
+            duration: '4.40',
+            number: 3
         },
         {
             title: 'Theme from A Fistful of Dollars',
-            album: ennio_fistful.title,
-            duration: '1.48'
+            album: ennio_fistful._id,
+            duration: '1.48',
+            number: 1
         },
         {
             title: 'The Result',
-            album: ennio_fistful.title,
-            duration: '2.36'
+            album: ennio_fistful._id,
+            duration: '2.36',
+            number: 2
         },
         {
             title: 'The Chase',
-            album: ennio_fistful.title,
-            duration: '2.25'
+            album: ennio_fistful._id,
+            duration: '2.25',
+            number: 3
         }
     );
 
